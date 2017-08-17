@@ -1,2 +1,2 @@
 # idris-electron
-Electron bindings for idris
+Electron bindings for Idris

@@ -1,0 +1,6 @@
+package main
+
+executable = main.js
+opts = "--codegen node"
+sourcedir = src
+main = main
