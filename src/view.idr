@@ -1,4 +1,4 @@
-import Document
+import DOM.Document
 
 %default total
 
