@@ -1,7 +1,8 @@
 module Electron.Window
 
 import JS
-import Utils
+import Foldable.Extras
+import Monad.Extras
 
 %default total
 %access public export
@@ -10,13 +11,10 @@ import Utils
 
 data Window = MkWindow Ptr
 
-data Option
-  = Title String
-  | Fullscreen
-  | Width Nat
-  | Height Nat
-
-
+data Option = Title String
+            | Fullscreen
+            | Width Nat
+            | Height Nat
 
 Cast Window Ptr where
   cast (MkWindow ptr) = ptr
