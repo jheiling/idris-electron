@@ -1,6 +1,6 @@
-import Node
-import Electron.App
-import Electron.Window
+import JS.Node
+import JS.Electron.App
+import JS.Electron.Window
 
 %lib Node "electron"
 
@@ -10,4 +10,4 @@ import Electron.Window
 
 main : JS_IO ()
 main = onReady $ do win <- windowWith [Title "Hello Electron", Width 800, Height 600]
-                    loadURL ("file://" ++ !getDir ++ "/view.html") win
+                    loadURL ("file://" ++ !getDir ++ "/example_view.html") win

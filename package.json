@@ -1,8 +1,8 @@
 {
   "name": "idris-electron",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Electron bindings for Idris",
-  "main" : "main.js",
+  "main" : "example_main.js",
   "scripts": {
     "start": "electron ."
   },
@@ -13,6 +13,6 @@
   "author": "Jürgen Heiling",
   "license": "Unlicense",
   "devDependencies": {
-    "electron": "~1.7.5"
+    "electron": "~1.8.2"
   }
 }

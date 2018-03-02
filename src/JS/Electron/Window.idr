@@ -1,8 +1,9 @@
-module Electron.Window
+module JS.Electron.Window
 
 import JS
-import Foldable.Extras
-import Monad.Extras
+import JS.Object
+import Data.Foldable.Extras
+import Control.Monad.Extras
 
 %default total
 %access public export
@@ -17,7 +18,7 @@ data Option = Title String
             | Height Nat
 
 Cast Window Ptr where
-  cast (MkWindow ptr) = ptr
+    cast (MkWindow ptr) = ptr
 
 
 
@@ -31,7 +32,7 @@ utSetOption (Width w) = js "%1.width = %0" (Double -> Ptr -> JS_IO ()) $ cast w
 utSetOption (Height h) = js "%1.height = %0" (Double -> Ptr -> JS_IO ()) $ cast h
 
 utOptions : Foldable f => f Option -> JS_IO Ptr
-utOptions opts = do optsObj <- object
+utOptions opts = do optsObj <- utEmpty
                     iter (flip utSetOption optsObj) opts
                     pure optsObj
 
@@ -55,13 +56,19 @@ utCentre = js "%0.center()" (Ptr -> JS_IO ())
 
 utOn : String -> JS_IO () -> Ptr -> JS_IO ()
 utOn event func obj = assert_total $
-  js "(%2).on(%0, %1)" (String -> JsFn (() -> JS_IO ()) -> Ptr -> JS_IO ())
-     event (MkJsFn $ const func) obj
+    js "(%2).on(%0, %1)"
+       (String -> JsFn (() -> JS_IO ()) -> Ptr -> JS_IO ())
+       event
+       (MkJsFn $ const func)
+       obj
 
 
+
+fromUt : JS_IO Ptr -> JS_IO Window
+fromUt win = pure $ MkWindow !win
 
 window : JS_IO Window
-window = utWindow >>= (pure . MkWindow)
+window = fromUt utWindow
 
 windowWith : Foldable f => f Option -> JS_IO Window
 windowWith = utOptions >=> utWindowWith >=> (pure . MkWindow)

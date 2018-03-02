@@ -1,7 +1,11 @@
 #!/bin/bash
 
-echo building main...
-idris --build main.ipkg
+echo building package
+idris --build electron.ipkg
+idris --mkdoc electron.ipkg
 
-echo building view...
-idris --build view.ipkg
+echo building example main...
+idris --build example_main.ipkg
+
+echo building example view...
+idris --build example_view.ipkg

@@ -1,0 +1,6 @@
+package electron
+
+sourcedir = src
+modules = JS.Electron.App
+        , JS.Electron.Window
+pkgs = extras

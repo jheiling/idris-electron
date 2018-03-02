@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo cleaning main...
-idris --clean main.ipkg
+echp cleaning package
+idris --clean electron.ipkg
 
-echo cleaning view...
-idris --clean view.ipkg
+echo cleaning example main...
+idris --clean example_main.ipkg
+
+echo cleaning example view...
+idris --clean example_view.ipkg

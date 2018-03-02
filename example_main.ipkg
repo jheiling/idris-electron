@@ -1,7 +1,7 @@
 package main
 
-executable = main.js
+executable = example_main.js
 opts = "--codegen node"
 sourcedir = src
-main = main
+main = example_main
 pkgs = extras
