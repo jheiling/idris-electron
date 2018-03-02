@@ -16,6 +16,7 @@ data Option = Title String
             | Fullscreen
             | Width Nat
             | Height Nat
+            | Frameless
 
 Cast Window Ptr where
     cast (MkWindow ptr) = ptr
@@ -30,6 +31,7 @@ utSetOption (Title t) = js "%1.title = %0" (String -> Ptr -> JS_IO ()) t
 utSetOption Fullscreen = js "%0.fullscreen = true" (Ptr -> JS_IO ())
 utSetOption (Width w) = js "%1.width = %0" (Double -> Ptr -> JS_IO ()) $ cast w
 utSetOption (Height h) = js "%1.height = %0" (Double -> Ptr -> JS_IO ()) $ cast h
+utSetOption Frameless = js "%0.frame = false" (Ptr -> JS_IO ())
 
 utOptions : Foldable f => f Option -> JS_IO Ptr
 utOptions opts = do optsObj <- utEmpty

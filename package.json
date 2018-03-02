@@ -1,7 +1,8 @@
 {
-  "name": "idris-electron",
+  "name": "idris-electron-example",
+  "productName": "Idris-Electron Example",
   "version": "0.0.2",
-  "description": "Electron bindings for Idris",
+  "description": "Electron bindings for Idris - Example",
   "main" : "example_main.js",
   "scripts": {
     "start": "electron ."
