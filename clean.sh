@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echp cleaning package
+echo cleaning package...
 idris --clean electron.ipkg
 
 echo cleaning example main...
