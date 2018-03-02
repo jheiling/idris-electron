@@ -4,4 +4,5 @@ executable = example_main.js
 opts = "--codegen node"
 sourcedir = src
 main = example_main
-pkgs = extras
+pkgs = contrib
+     , extras

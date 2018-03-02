@@ -1,9 +1,10 @@
 module JS.Electron.Window
 
+import Control.Monad.Syntax
+
 import JS
 import JS.Object
 import Data.Foldable.Extras
-import Control.Monad.Extras
 
 %default total
 %access public export

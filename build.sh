@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo building package
+echo building package...
 idris --build electron.ipkg
 idris --mkdoc electron.ipkg
 
