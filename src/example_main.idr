@@ -8,6 +8,8 @@ import JS.Electron.Window
 
 
 
+win : String -> Options
+win dir = record {title = Just "Hello Electron", url = Just ("file://" ++ dir ++ "/example_view.html"), width = Just 800, height = Just 600} defaults
+
 main : JS_IO ()
-main = onReady $ do win <- windowWith [Title "Hello Electron", Width 800, Height 600]
-                    loadURL ("file://" ++ !dir ++ "/example_view.html") win
+main = onReady $ do centre !(create $ win !dir)
