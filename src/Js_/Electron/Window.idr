@@ -1,9 +1,9 @@
-module JS.Electron.Window
+module Js.Electron.Window
 
 import Control.Monad.Syntax
 import Data.Foldable.Extras
-import JS
-import JS.Object
+import Js
+import Js.Object
 
 %default total
 %access public export
@@ -57,9 +57,9 @@ onClosed = on "closed"
 create : Options -> JS_IO Window
 create (MkOptions title url width height fullscreen frame) = do
     options <- empty
-    iter (flip (setString "title") options) title
-    iter (flip (setNat "width") options) width
-    iter (flip (setNat "height") options) height
+    iter (flip (set "title") options) title
+    iter (flip (set "width") options) width
+    iter (flip (set "height") options) height
     setBool "fullscreen" fullscreen options
     setBool "frame" frame options
     win <- pure $ MkWindow !(js "new electron.BrowserWindow(%0)" (Ptr -> JS_IO Ptr) $ cast options)

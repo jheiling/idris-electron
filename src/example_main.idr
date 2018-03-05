@@ -1,6 +1,6 @@
-import JS.Node.Module
-import JS.Electron.App
-import JS.Electron.Window
+import Js.Node.Module
+import Js.Electron.App
+import Js.Electron.Window
 
 %lib Node "electron"
 

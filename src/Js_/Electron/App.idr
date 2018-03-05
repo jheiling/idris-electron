@@ -1,6 +1,6 @@
-module JS.Electron.App
+module Js.Electron.App
 
-import JS
+import Js
 
 %default total
 %access export
