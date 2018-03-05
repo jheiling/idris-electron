@@ -8,12 +8,12 @@
     "start": "electron ."
   },
   "keywords": [
-    "Electron",
-    "Idris"
+    "Idris",
+    "Electron"
   ],
   "author": "Jürgen Heiling",
   "license": "Unlicense",
-  "devDependencies": {
+  "dependencies": {
     "electron": "~1.8.2"
   }
 }
