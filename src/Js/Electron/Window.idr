@@ -6,10 +6,11 @@ import Js
 import Js.Object
 
 %default total
-%access public export
+%access export
 
 
 
+public export
 record Options where
     constructor MkOptions
     title,
@@ -19,12 +20,19 @@ record Options where
     fullscreen,
     frame : Bool
 
+public export
 data Window = MkWindow Ptr
 
 
 
 Cast Window Ptr where
     cast (MkWindow ptr) = ptr
+
+Cast (JS_IO Ptr) (JS_IO Window) where
+    cast x = pure $ MkWindow !x
+
+Cast (JS_IO Window) (JS_IO Ptr) where
+    cast x = pure $ cast !x
 
 
 
@@ -62,6 +70,6 @@ create (MkOptions title url width height fullscreen frame) = do
     iter (flip (set "height") options) height
     setBool "fullscreen" fullscreen options
     setBool "frame" frame options
-    win <- pure $ MkWindow !(js "new electron.BrowserWindow(%0)" (Ptr -> JS_IO Ptr) $ cast options)
+    win <- cast $ js "new electron.BrowserWindow(%0)" (Ptr -> JS_IO Ptr) $ cast options
     iter (flip loadURL win) url
     pure win
