@@ -68,8 +68,8 @@ create (MkOptions title url width height fullscreen frame) = do
     iter (flip (set "title") options) title
     iter (flip (set "width") options) width
     iter (flip (set "height") options) height
-    setBool "fullscreen" fullscreen options
-    setBool "frame" frame options
+    set "fullscreen" fullscreen options
+    set "frame" frame options
     win <- cast $ js "new electron.BrowserWindow(%0)" (Ptr -> JS_IO Ptr) $ cast options
     iter (flip loadURL win) url
     pure win
