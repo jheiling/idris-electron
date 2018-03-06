@@ -4,4 +4,6 @@ executable = example_view.js
 opts = "--codegen node"
 sourcedir = src
 main = example_view
-pkgs = extras
+pkgs = contrib
+     , extras
+     , js

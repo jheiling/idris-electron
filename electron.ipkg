@@ -5,3 +5,4 @@ modules = Js.Electron.App
         , Js.Electron.Window
 pkgs = contrib
      , extras
+     , js
